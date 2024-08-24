@@ -1,8 +1,14 @@
 from django.shortcuts import render
 
 
-def books(request):
+def index(request):
     return render(request, 'pages/index.html')
 
-def author_detail(request):
+def books(request):
     return render(request, 'pages/books.html')
+
+def update(request):
+    return render(request, 'pages/update.html')
+
+def delete(request):
+    return render(request, 'pages/delete.html')
