@@ -34,7 +34,18 @@
 {% include "compomint/footer.html" %}
 
 <!-- REQUIRED SCRIPTS -->
+<script>
 
+  $('#catinput').hide()
+  $('#addcat').click(function()
+  {
+    $('#catinput').show()
+
+  })
+  $('#backcat').hide()
+
+
+</script>
 <!-- jQuery -->
 <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
 
@@ -133,7 +144,7 @@
       type: 'pie',
       data: {
         datasets: [{
-          data: ['35', '25', '40'],
+          data: ['{{statusavailble}}', '{{statussold}}', '{{statusrental}}'],
           backgroundColor: ["#27c100", "#f3545d", "#fdaf4b"],
           borderWidth: 10
         }],
@@ -160,6 +171,35 @@
     });
   });
 </script>
+<script>
 
+  $('#catinput').hide()
+  $('#addcat').click(function()
+  {
+    $('#catinput').show()
+
+  })
+  $('#backcat').click(function()
+  {
+    $('#catinput').hide()
+
+  })
+
+
+
+{% for book in books %}
+$(".category{{book.category.id}}").click(function(){
+  $(".bookhide").hide(),
+   $(".book{{book.category.id}}").show()
+});
+
+$(".status{{book.status}}").click(function(){
+  $(".bookhide").hide(),
+   $(".book{{book.status}}").show()
+});
+  {% endfor %}
+
+
+</script>
 </body>
 </html>
